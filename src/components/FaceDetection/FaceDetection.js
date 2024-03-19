@@ -32,7 +32,7 @@ function FaceDetection() {
         });
     };
     const getLabeledFaceDescriptors = async () => {
-      const labels = ["Bandini", "Anju"];
+      const labels = ["Anju", "Bandini"];
       const labeledFaceDescriptors = [];
     
       for (const label of labels) {
@@ -43,7 +43,7 @@ function FaceDetection() {
             const detections = await faceapi.detectSingleFace(img)
               .withFaceLandmarks()
               .withFaceDescriptor()
-              // .withfaceExpressionNet();
+              .withfaceExpressionNet();
             descriptions.push(detections.descriptor);
           } catch (error) {
             console.error(`Error fetching image for ${label} (${i}.jpg):`, error);
